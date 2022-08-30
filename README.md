@@ -6,12 +6,6 @@ Pre-release version, ready for testing and feedback.
 
 Usefull for demos and hobby projects.
 
-## Prerequisits
-
-* Check [Craft's recommended server requirements](https://craftcms.com/docs/4.x/requirements.html).
-* Create a MySql database.
-* Set up a web server pointing to the `web` directory of your project. Alternatively you can run `php craft serve` and
-  use `http://localhost:8080` as your domain.
 
 ## Clone Repository
 
@@ -42,6 +36,11 @@ Tipp: Run `bash install-ddev`
 
 
 ## Installation in WAMP/XAMPP/MAMPP etc.
+
+* Check [Craft's recommended server requirements](https://craftcms.com/docs/4.x/requirements.html).
+* Create a MySql database.
+* Set up a web server pointing to the `web` directory of your project. Alternatively you can run `php craft serve` and
+  use `http://localhost:8080` as your domain.
 
 * Run `composer install --no-dev`
 * Edit `config/Env.php` with your environment specific settings.
