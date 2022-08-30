@@ -1,0 +1,28 @@
+{% set blocks = siteInfo.bodyContent.all %}
+
+{% if blocks %}
+    {% include "_partials/blocks.twig" with {
+        entry,
+        blocks
+    } only %}
+{% else %}
+    <div class="md:flex md:justify-between z-20">
+        <div>
+            {% include '_partials/dynamic/footer-copyright.twig' %}
+        </div>
+
+        {% include '_partials/dynamic/social-icons.twig' %}
+
+        <div class="mt-4 md:mt-0">
+            {% include '_partials/dynamic/legal.twig' %}
+        </div>
+    </div>
+
+    {% if theme.darkMode == 'user' %}
+        <div class="mt-4 flex justify-center">
+            {% include '_partials/dynamic/darkmode.twig' %}
+        </div>
+    {% endif %}
+
+{% endif %}
+

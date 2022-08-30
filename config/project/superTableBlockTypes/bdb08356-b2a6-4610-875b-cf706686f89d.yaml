@@ -1,0 +1,120 @@
+field: a6f9a628-cf74-47fd-aebe-0587bea06e3c # Columns
+fieldLayouts:
+  cfb6aed6-7e10-4077-9ef3-f170be0954d0:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 57dba12d-3dba-4e01-a8e5-7ed1323f9c68 # Span
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e7e730d7-8ff7-4470-8d2f-d68d0c640bc7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 20f9b230-8862-4058-9cf3-7c7a78e44a13 # Column
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2f99a3d3-7e78-4367-b595-439b8aa69891
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ec9230ed-bb54-4511-b031-21ade785e0f5
+        userCondition: null
+fields:
+  20f9b230-8862-4058-9cf3-7c7a78e44a13: # Column
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: columnContent
+    instructions: null
+    name: Column
+    searchable: true
+    settings:
+      contentTable: '{{%matrixcontent_columncontent}}'
+      maxBlocks: null
+      minBlocks: null
+      propagationKeyFormat: null
+      propagationMethod: all
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  57dba12d-3dba-4e01-a8e5-7ed1323f9c68: # Span
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: span
+    instructions: null
+    name: Span
+    searchable: false
+    settings:
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Auto
+            -
+              - value
+              - auto
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Half
+            -
+              - value
+              - '6'
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'One third'
+            -
+              - value
+              - '4'
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Two thirds'
+            -
+              - value
+              - '8'
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'One quarter'
+            -
+              - value
+              - '3'
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown

@@ -1,0 +1,55 @@
+{% from '_macros/lib.twig' import img %}
+
+{% set video = block.videoFile.one %}
+{% set image = block.posterImage.one %}
+
+{% if video %}
+
+    {% if block.showInModal %}
+
+        {% embed '_layouts/components/modal.twig' %}
+
+            {% block heading %}
+                {{ video.title }}
+            {% endblock %}
+
+            {% block scripts %}
+                x-effect="open ? $refs.video.play() : $refs.video.pause()"
+            {% endblock %}
+
+            {% block button %}
+                {% from '_macros/lib.twig' import img %}
+
+                {% if image %}
+                    <div class="relative shadow-2xl">
+                        {{ img(image, theme.cardImageTransform) }}
+
+                        <div class="absolute inset-0 text-center text-white flex items-center justify-center w-full bg-black/20">
+                            {{ svg('@templates/_icons/play.svg') }}
+                        </div>
+
+                    </div>
+                {% else %}
+                    <div class="btn bg-primary text-secondary">
+                        {{ 'Play Video'|t }}: {{ video.title }}
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+            {% block content %}
+                <video x-ref="video" src="{{ video.url }}" controls></video>
+            {% endblock %}
+
+        {% endembed %}
+
+    {% else %}
+
+        <div>
+            <video src="{{ video.url }}" poster="{{ image.url ?? '' }}" controls></video>
+        </div>
+
+    {% endif %}
+
+
+{% endif %}
+

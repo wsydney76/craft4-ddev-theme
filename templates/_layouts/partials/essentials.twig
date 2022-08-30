@@ -1,0 +1,41 @@
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+{% if localizedEntries is defined and localizedEntries %}
+
+    <link rel="alternate" href="{{ entry.url }}" hreflang="{{ entry.language }}">
+    {% for localizedEntry in localizedEntries %}
+        <link rel="alternate" href="{{ localizedEntry.url }}" hreflang="{{ localizedEntry.language }}">
+    {% endfor %}
+
+{% endif %}
+
+
+{{ craft.vite.script("/resources/js/app.js", false) }}
+
+
+{% if theme.fontUrl %}
+    <link href="{{ theme.fontUrl }}" rel="stylesheet">
+{% endif %}
+
+{% include '_layouts/partials/darkmode.twig' %}
+
+{% set icon = siteInfo.favIcon.one %}
+{% if icon %}
+    <link rel="icon" href="{{ icon.url }}">
+{% endif %}
+
+{% if craft.app.plugins.pluginEnabled('blitz') %}
+    {% do craft.blitz.options
+        .expiryDate(now|date_modify('+1day'))
+        .tags(currentSite.handle) %}
+{% endif %}
+
+{% hook 'seomateMeta' %}
+
+{% if entry is defined %}
+    {% include '_partials/ldjson.twig' with {entry} only %}
+{% endif %}
+
+{% include '_partials/scrollToTop.twig' %}

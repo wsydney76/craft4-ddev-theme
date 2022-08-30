@@ -1,0 +1,333 @@
+field: 266ac6c3-03c0-40eb-8f24-c5c22ed1c5c0 # Content
+fieldLayouts:
+  d70a7482-63dc-452f-8a8a-4b741b026dfc:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 85347e4c-c38c-4edd-b1b6-c19c29ca6ad4 # Image
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0108539e-cc88-401e-a745-1a5805a6bc68
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: d7695888-b2ff-4bbe-ba19-672754ca90a3 # Heading
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6fe8298b-10b0-4371-8744-d132721bae90
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b68da9c5-b120-4d9d-aeda-909f35107532 # Text
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d96da507-f86e-492f-b710-12ffa2708a22
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 30740157-2dd2-4b34-bc62-246493985a92 # Width
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bfbadf29-4d8b-471c-b3a5-d203e531d539
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 842e6c06-cc3a-40c7-9fdb-13b911f9602b # Image Align
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b728a4d3-d8b3-4dd4-ae33-f069e0c55b1a
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: f7d4d3ce-88ca-46e0-a39d-135eb2c82efd # Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 39231f3a-b962-4001-9cbe-5af16db6c9d9
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 8f7a501f-8f71-499e-925e-a2de6a443fd2 # Margins Y
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 299673eb-c04f-44ae-8df1-2c597354efac
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 2e7a2b78-1f15-4193-ab59-950736957ac4 # Aspect Ratio
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ef9d104c-2bb4-4c22-93e0-3658b960b35e
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 44b322dd-2b68-4cbf-ac78-a70d2d80af18 # Image Background Color
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 90f9af80-3d25-4135-a634-10c05d3430a9
+            userCondition: null
+            warning: null
+            width: 25
+        name: Content
+        uid: 5d560b22-ebe9-4ddb-9c3d-e0f1a4ca2cd5
+        userCondition: null
+fields:
+  2e7a2b78-1f15-4193-ab59-950736957ac4: # Aspect Ratio
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: aspectRatio
+    instructions: 'Style = Overlap'
+    name: 'Aspect Ratio'
+    searchable: false
+    settings:
+      defaultAspectRatio: '16:9'
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\main\fields\AspectRatioField
+  8f7a501f-8f71-499e-925e-a2de6a443fd2: # Margins Y
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: marginsY
+    instructions: null
+    name: 'Margins Y'
+    searchable: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\main\fields\MarginsYField
+  44b322dd-2b68-4cbf-ac78-a70d2d80af18: # Image Background Color
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: imageBackgroundColor
+    instructions: 'Style = Colored'
+    name: 'Image Background Color'
+    searchable: false
+    settings:
+      defaultColor: light
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\main\fields\ThemeColorField
+  842e6c06-cc3a-40c7-9fdb-13b911f9602b: # Image Align
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: align
+    instructions: null
+    name: 'Image Align'
+    searchable: false
+    settings:
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Image Left'
+            -
+              - value
+              - imageLeft
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'Image Right'
+            -
+              - value
+              - imageRight
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  85347e4c-c38c-4edd-b1b6-c19c29ca6ad4: # Image
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: null
+    name: Image
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:f2bd38f3-47f5-4e49-be18-fa89073255fd' # Media
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:f2bd38f3-47f5-4e49-be18-fa89073255fd' # Media
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Select image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      source: null
+      sources:
+        - 'volume:270fd626-b08d-4f72-9383-3acdcd200225' # Images
+      targetSiteId: null
+      validateRelatedElements: true
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  30740157-2dd2-4b34-bc62-246493985a92: # Width
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: width
+    instructions: null
+    name: Width
+    searchable: false
+    settings:
+      addDefaultOptions: true
+      addMobileOptions: false
+      defaultWidth: default
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\main\fields\WidthField
+  b68da9c5-b120-4d9d-aeda-909f35107532: # Text
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: text
+    instructions: null
+    name: Text
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: true
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  d7695888-b2ff-4bbe-ba19-672754ca90a3: # Heading
+    columnSuffix: null
+    contentColumnType: string(240)
+    fieldGroup: null
+    handle: heading
+    instructions: null
+    name: Heading
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 60
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  f7d4d3ce-88ca-46e0-a39d-135eb2c82efd: # Style
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: style
+    instructions: null
+    name: Style
+    searchable: false
+    settings:
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Colored
+            -
+              - value
+              - colored
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Overlap
+            -
+              - value
+              - overlap
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: imageAndText
+name: 'Image and Text'
+sortOrder: 5

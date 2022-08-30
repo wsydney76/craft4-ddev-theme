@@ -1,0 +1,84 @@
+{# param person, author #}
+{# @var person \craft\elements\Entry #}
+{# @var author \craft\elements\User #}
+
+{% from '_macros/lib.twig' import img %}
+
+{% set showTitle = showTitle ?? false %}
+
+{% if person %}
+    {% set titleLink = person.link %}
+    {% set title = person.title %}
+    {% set email = person.email %}
+    {% if not email and author %}
+        {% set email = author.email %}
+    {% endif %}
+    {% set image = person.photo.one %}
+    {% if not image %}
+        {% set image = author.photo %}
+    {% endif %}
+    {% set teaser = person.teaser %}
+    {% set bio = person.bio %}
+{% else %}
+    {% set titleLink = author.name %}
+    {% set title = author.name %}
+    {% set email = author.email %}
+    {% set image = author.photo %}
+    {% set teaser = '' %}
+    {% set bio = '' %}
+{% endif %}
+
+{# Fix where author.photo not available on all sites #}
+{% if not image and author.photoId %}
+    {% set image = craft.assets.id(author.photoId).site('*').one %}
+{% endif %}
+
+<div class="container-{{ theme.pageWidth }} mb-block">
+
+    <div class="border-b-2 pb-4 border-border">
+
+        <div class="mt-4 flex items-center space-x-4">
+            {% if image %}
+                <div>
+                    {{ img(image, {width: 120, height: 120}, {attrs: {class: 'rounded-full'}}) }}
+                </div>
+            {% endif %}
+
+            <div class="flex items-center">
+                <div class="space-y-2">
+                    {% if showTitle %}
+                        <div class="text-2xl font-semibold">
+                            {{ titleLink }}
+                        </div>
+                    {% endif %}
+                    {% if teaser %}
+                        <div class="text-base">
+                            {{ teaser }}
+                        </div>
+                    {% endif %}
+
+                    {% if bio %}
+                        <div class="text-base  font-semibold">
+                            {{ bio|md|purify }}
+                        </div>
+                    {% endif %}
+
+                    {% if person and email %}
+                        {% set messageEntry = craft.entries.section('message').one %}
+
+                        {% if messageEntry %}
+                            <div class="text-base">
+                                ✉
+                                <a href="{{ url(messageEntry.url, {id: person.id|hash}) }}">{{ 'Message to'|t }} {{ title }}</a>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

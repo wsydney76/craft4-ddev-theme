@@ -1,0 +1,43 @@
+{% from '_macros/lib.twig' import img %}
+
+<article
+        class="w-card border border-border mr-4 mb-4  bg-card dark:bg-card-dark text-foreground dark:text-foreground-dark hover:bg-card-hover dark:hover:bg-card-hover-dark transition-colors shadow-lg">
+    <a class="!no-underline flex flex-col justify-between h-full"
+       href="{{ entry.url }}">
+        <div>
+            <div>
+                {% set image = entry.featuredImage.one ?? null %}
+                {% if not image %}
+                    {% set image = siteInfo.featuredImage.one %}
+                {% endif %}
+                {% if image %}
+                    {{ img(image, theme.cardImageTransform, {showCopyright: false}) }}
+                {% endif %}
+            </div>
+            <div class="p-4">
+                {% if entry.teaser %}
+                    <div class="text-sm text-teaser dark:text-teaser-dark font-semibold mb-1">
+                        {{ entry.teaser }}
+                    </div>
+                {% endif %}
+                <div class="text-2xl">
+                    {{ entry.title }}
+                </div>
+
+                {% block sectionContent %}
+                    <div class="text-base">
+                        {% include "_sections/#{entry.section.handle}/card_content.twig" ignore missing %}
+                    </div>
+                {% endblock %}
+
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+        {% block sectionBottomContent %}
+            <div class="p-4">
+                {% include "_sections/#{entry.section.handle}/card_bottom_content.twig" ignore missing %}
+            </div>
+        {% endblock %}
+    </a>
+</article>

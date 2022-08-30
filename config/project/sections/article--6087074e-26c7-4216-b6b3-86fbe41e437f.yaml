@@ -1,0 +1,40 @@
+defaultPlacement: end
+enableVersioning: false
+handle: article
+name: Article
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+  -
+    __assoc__:
+      -
+        - label
+        - 'Article Index page'
+      -
+        - urlFormat
+        - '{% set e = craft.entries.section(''page'').siteId(object.siteId).indexSection(''article'').one %}{{ e ? e.url : '''' }}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  6cae2408-4e31-46df-8a5b-33f31d339176: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: _sections/article
+    uriFormat: 'artikel/{slug}'
+  b0f125c5-eef7-49fc-8d15-152965d0bab6: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: _sections/article
+    uriFormat: 'article/{slug}'
+type: channel

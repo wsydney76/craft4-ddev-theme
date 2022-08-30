@@ -1,0 +1,28 @@
+{% switch theme.titleStyle %}
+
+{% case "coverBoxed" %}
+
+    {% include '_layouts/partials//fullwidth/titlearea_coverboxed.twig' %}
+
+
+{% default %}
+
+    {% if theme.titleStyle == 'textImage' %}
+        <div class="px-8">
+            {{ titleHtml|raw }}
+        </div>
+    {% endif %}
+
+    <div>
+        {{ titleImageHtml|raw }}
+    </div>
+
+    {% if theme.titleStyle != 'textImage' %}
+        <div class="px-block {{ theme.titleStyle == 'fullTextColor' ? 'bg-title-bg dark:bg-title-bg-dark text-title-text dark:text-title-text-dark' }} py-4">
+            {{ titleHtml|raw }}
+        </div>
+    {% endif %}
+
+{% endswitch %}
+
+

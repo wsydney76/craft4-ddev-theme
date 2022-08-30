@@ -1,0 +1,65 @@
+{% from '_macros/lib.twig' import img %}
+
+{% set image = themeOptions.featuredImage ?? entry.featuredImage.one ?? null %}
+{% if not image and theme.useFallbackImage %}
+    {% set image = siteInfo.featuredImage.one %}
+{% endif %}
+
+{% set height = theme.titleImageHeight %}
+{% set showTeaser = themeOptions.showTeaser ?? true %}
+{% set teaser = themeOptions.teaser ?? entry.teaser ?? '' %}
+{% set title = themeOptions.title ?? entry.title %}
+
+{% set increaseTitleContrast = entry.increaseTitleContrast.value ?? '' %}
+
+{% switch theme.titleStyle %}
+
+{% case "coverFull" or "coverContent" %}
+
+    {% if image %}
+        <div class="relative {{ theme.titleStyle == 'coverContent' ? 'max-w-screen-{{ theme.titleImageWidth }} mx-auto' }}">
+            {% if theme.titleStyle == 'coverFull' %}
+                {{ img(image, {width:theme.widths['full'], height: height ?? 900}, {attrs: {loading: null}, showCopyright: false}) }}
+            {% else %}
+                {{ img(image, {width: theme.widths[theme.titleImageWidth], height: height ?? 400}, {attrs: {loading: null}, showCopyright: false}) }}
+            {% endif %}
+
+            <div class="absolute inset-0 flex items-center justify-center {{ increaseTitleContrast == 'image' ? 'backdrop-brightness-75' }} {{ increaseTitleContrast == 'imageDark' ? 'backdrop-brightness-50' }}">
+                <div class="cover-text text-black py-2 md:py-8 px-8 md:px-16 max-w-screen-{{ theme.titleWidth }} mx-auto  {{ increaseTitleContrast == 'box' ? 'backdrop-brightness-50 border border-border' }} ">
+                    {% if showTeaser and teaser %}
+                        <div class="text-white text-xl">
+                            {{ teaser }}
+                        </div>
+                    {% endif %}
+                    <h1 class="text-4xl text-h1 md:text-5xl lg:text-7xl text-white mb-0">{{ title }}</h1>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container max-w-screen-lg mx-auto px-8">
+            {% if  showTeaser and teaser %}
+                <div class="">
+                    {{ teaser }}
+                </div>
+            {% endif %}
+            <h1 class="mb-0">{{ title }}</h1>
+        </div>
+    {% endif %}
+
+{% case "text" or "introImage" %}
+    {# no image or image will be handled in title template #}
+
+{% case "fullText" or "fullTextColor" %}
+    {% if image %}
+        <div>
+            {{ img(image, {width:theme.widths['full'], height: height ?? 900}, {attrs: {loading: null}, showCopyright: false}) }}
+        </div>
+    {% endif %}
+{% default %}
+    {% if image %}
+        {{ img(image, {width: theme.widths[theme.titleImageWidth], height: height ?? 400}, {attrs: {loading: null}, showCopyright: false}) }}
+    {% endif %}
+{% endswitch %}
+
+
+

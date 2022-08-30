@@ -1,0 +1,15 @@
+<div class="border border-border dark:border-border-dark bg-gray-200 dark:bg-dark-600 {{ theme.useProse ? 'max-w-prose' }}">
+    {% if block.heading %}
+        <div class="mb-4 text-xl font-semibold p-4 bg-white dark:bg-dark-700 flex items-center space-x-4">
+            <div>
+                {{ svg('@templates/_icons/light-bulb.svg') }}
+            </div>
+            <div>
+                {{ block.heading }}
+            </div>
+        </div>
+    {% endif %}
+    <div class="text-base p-4">
+        {{ block.text|md|purify }}
+    </div>
+</div>

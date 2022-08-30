@@ -1,0 +1,32 @@
+defaultPlacement: end
+enableVersioning: false
+handle: page
+name: Page
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  6cae2408-4e31-46df-8a5b-33f31d339176: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: _sections/page
+    uriFormat: '{parent.uri}/{slug}'
+  b0f125c5-eef7-49fc-8d15-152965d0bab6: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: _sections/page
+    uriFormat: '{parent.uri}/{slug}'
+structure:
+  maxLevels: 3
+  uid: 887f7d24-1a50-4b16-8b0d-89302f5b6973
+type: structure

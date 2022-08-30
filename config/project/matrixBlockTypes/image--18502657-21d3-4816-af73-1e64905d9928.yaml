@@ -1,0 +1,261 @@
+field: 266ac6c3-03c0-40eb-8f24-c5c22ed1c5c0 # Content
+fieldLayouts:
+  1ade30d6-d4fd-4ca6-8b86-7762b4e70a86:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 1df21aa9-d2ee-4afa-88ca-298f68536dfd # Image
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bbfd3b83-eec1-4c29-8eaa-61dba1490ecb
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 4008cfb2-85a6-441c-bffb-b4d1cf5c23e0 # Caption
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6702219f-7c10-4daa-9114-b901090cd42e
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 6cc5489b-8b5b-4803-84e7-8520cf7b142f # Width
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6e02d9fd-7b2c-48ab-a0ab-3769a20b39cf
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 0cb800eb-b7ac-4482-b68e-1bb06dbe4ca9 # Aspect Ratio
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f4229a76-1136-44bd-adf0-3fd596d53216
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 599e26fb-8feb-4096-b249-19bdc57c275a # Margins Y
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6fc083f3-f8a3-47c6-b99a-f82e59f82898
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 695a4b42-15e1-4ea6-acdf-a19587641da5 # Styles
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 866119fe-6c65-4857-b731-8dddbc6d867a
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 484e711a-2618-494e-a986-e11b8912b1ff # Image Effects
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9a62d22e-c0ce-4f70-af07-b8fec13e4d10
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 73e8b164-ecae-478e-a26f-46a6485e3087
+        userCondition: null
+fields:
+  0cb800eb-b7ac-4482-b68e-1bb06dbe4ca9: # Aspect Ratio
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: aspectRatio
+    instructions: null
+    name: 'Aspect Ratio'
+    searchable: false
+    settings:
+      defaultAspectRatio: '16:9'
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\main\fields\AspectRatioField
+  1df21aa9-d2ee-4afa-88ca-298f68536dfd: # Image
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: null
+    name: Image
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:270fd626-b08d-4f72-9383-3acdcd200225' # Images
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:f2bd38f3-47f5-4e49-be18-fa89073255fd' # Media
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Select image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      source: null
+      sources:
+        - 'volume:270fd626-b08d-4f72-9383-3acdcd200225' # Images
+      targetSiteId: null
+      validateRelatedElements: true
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  6cc5489b-8b5b-4803-84e7-8520cf7b142f: # Width
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: width
+    instructions: null
+    name: Width
+    searchable: false
+    settings:
+      addDefaultOptions: true
+      addMobileOptions: false
+      defaultWidth: default
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\main\fields\WidthField
+  484e711a-2618-494e-a986-e11b8912b1ff: # Image Effects
+    columnSuffix: eynadnwm
+    contentColumnType: text
+    fieldGroup: null
+    handle: imageEffects
+    instructions: "Effects to be applied on transformed images. See [docs](https://imager-x.spacecat.ninja/effects.html). Requires Imager X plugin.\r\n\r\nHas to be valid JSON, e.g {\"sharpen\": false}"
+    name: 'Image Effects'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: true
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  599e26fb-8feb-4096-b249-19bdc57c275a: # Margins Y
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: marginsY
+    instructions: 'Use to avoid gaps between colored sections or fullwidth images'
+    name: 'Margins Y'
+    searchable: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\main\fields\MarginsYField
+  695a4b42-15e1-4ea6-acdf-a19587641da5: # Styles
+    columnSuffix: pzwdxxeh
+    contentColumnType: string
+    fieldGroup: null
+    handle: styles
+    instructions: null
+    name: Styles
+    searchable: false
+    settings:
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Boxed
+            -
+              - value
+              - boxed
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Caption right'
+            -
+              - value
+              - captionRight
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Checkboxes
+  4008cfb2-85a6-441c-bffb-b4d1cf5c23e0: # Caption
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: caption
+    instructions: null
+    name: Caption
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 40
+      code: false
+      columnType: string
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+handle: image
+name: Image
+sortOrder: 3

@@ -1,0 +1,169 @@
+{% macro img(image, transform = {}, params = {}) %}
+
+    {% set params = {
+        attrs: {},
+        showCopyright: true,
+        createSrcset: true,
+        imageEffects: null
+    }|merge(params) %}
+
+    {% if theme.skipSrcsetInDevMode and devMode %}
+        {% set params = params|merge({createSrcset: false}) %}
+    {% endif %}
+
+	{% if image.extension == 'svg' %}
+		{# Do not mess with svg #}
+
+		{% set transform = transform|merge({format: null}) %}
+		{% if transform.width and transform.height is not defined %}
+			{% set aspectRatio = image.width / image.height %}
+			{% set transform = transform|merge({height: floor(transform.width / aspectRatio)}) %}
+		{% endif %}
+
+		{% set imgHtml %}
+			{{ image.img(transform)|attr({alt: image.altText ?: image.title, loading: 'lazy'}) }}
+		{% endset %}
+
+    {% elseif craft.app.plugins.pluginEnabled('imager-x')  %}
+        {# Use Imager transforms for (slightly) better quality and more control #}
+
+        {% set imager = craft.imager %}
+
+        {% if transform is string %}
+            {# named transform, all params are set in config #}
+            {% set transformedImages = imager.transformImage(image, transform) %}
+
+            {% if transformedImages is array %}
+                {% set imgHtml = tag('img', {
+                    src: imager.placeholder({color: '#cccccc' }),
+                    alt: image.altText ?: image.title,
+                    srcset: imager.srcset(transformedImages),
+                    loading: 'lazy'
+                }|merge(params.attrs)) %}
+            {% else %}
+                {% set imgHtml = tag('img', {
+                    src: transformedImages.url,
+                    alt: image.altText ?: image.title,
+                    loading: 'lazy'
+                }|merge(params.attrs)) %}
+            {% endif %}
+
+        {% else %}
+            {# on the fly transform, calculate missing parameters #}
+
+            {% if transform.width is defined and transform.height is defined %}
+                {# noop #}
+            {% elseif transform.width is defined %}
+                {% set ratio = image.width / image.height %}
+                {% set transform = transform|merge({height: (transform.width / ratio)|round(0) }) %}
+            {% elseif transform.height is defined %}
+                {% set ratio = image.width / image.height %}
+                {% set transform = transform|merge({width: (transform.height * ratio)|round(0) }) %}
+            {% else %}
+                {% set transform = transform|merge({width: image.width, height: image.height }) %}
+            {% endif %}
+
+            {% if params.imageEffects %}
+                {% set effects = params.imageEffects|json_decode %}
+            {% elseif image.imageEffects %}
+                {% set effects = image.imageEffects|json_decode %}
+            {% else %}
+                {% set effects = transform.effects ?? theme.defaultImageEffects %}
+            {% endif %}
+
+            {% set baseTransform = {
+                width: transform.width,
+                height: transform.height,
+                format: transform.format ?? theme.defaultImageFormat,
+                mode: transform.mode ?? 'crop',
+                effects: effects
+            } %}
+
+            {% if params.createSrcset and transform.width is defined and transform.width > theme.minResponsiveWidth %}
+
+                {% set ratio = transform.width / transform.height %}
+
+                {% set transforms = [baseTransform] %}
+                {% for responsiveWidth in responsiveWidths ?? theme.responsiveWidths %}
+                    {% if responsiveWidth < transform.width %}
+                        {% set transforms = transforms|push(baseTransform|merge({width: responsiveWidth, height: (responsiveWidth / ratio)|round(0)})) %}
+                    {% endif %}
+                {% endfor %}
+
+
+                {% set transformedImages = imager.transformImage(image, transforms) %}
+
+                {% set imgHtml = tag('img', {
+                    src: imager.placeholder({ width: transform.height, height: transform.width, color: '#cccccc' }),
+                    height: transform.height,
+                    width: transform.width,
+                    alt: image.altText ?: image.title,
+                    srcset: imager.srcset(transformedImages),
+                    loading: 'lazy'
+                }|merge(params.attrs)) %}
+
+            {% else %}
+
+                {% set transformedImage = imager.transformImage(image, baseTransform) %}
+
+                {% set imgHtml = tag('img', {
+                    src: transformedImage.url,
+                    height: transform.height,
+                    width: transform.width,
+                    alt: image.altText ?: image.title,
+                    loading: 'lazy'
+                }|merge(params.attrs)) %}
+
+            {% endif %}
+        {% endif %}
+
+
+    {% else %}
+
+        {# Use native Craft transforms #}
+
+        {% set srcSet = [] %}
+        {% if transform.width is defined %}
+            {% set srcSet = [transform.width] %}
+            {% for responsiveWidth in theme.responsiveWidths %}
+                {% if responsiveWidth < transform.width %}
+                    {% set srcSet = srcSet|push(responsiveWidth) %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if transform.format is not defined %}
+            {% set transform = transform|merge({format: 'webp'}) %}
+        {% endif %}
+
+
+        {% do image.setTransform(transform) %}
+
+
+        {% set imgHtml = tag('img', {
+            src: image.url,
+            height: transform.height,
+            width: transform.width,
+            alt: image.altText ?: image.title,
+            srcset: image.srcset(srcSet),
+            loading: 'lazy'
+        }|merge(params.attrs)) %}
+
+    {% endif %}
+
+    {% if params.showCopyright and image.copyright %}
+        <div class="relative inline-block overflow-hidden">
+            {{ imgHtml|raw }}
+            <div class="absolute bottom-0 left-0 bg-black/30 rounded-tl px-1 py-0.5 text-white text-xs truncate">
+                {% if image.copyrightLink %}
+                    &copy; <a href="{{ image.copyrightLink }}">{{ image.copyright }}</a>
+                {% else %}
+                    &copy; {{ image.copyright }}
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        {{ imgHtml|raw }}
+    {% endif %}
+
+{% endmacro %}

@@ -1,0 +1,71 @@
+{% if currentUser %}
+    {% redirect "/" %}
+{% endif %}
+
+{% set user = user ?? null %}
+
+{% embed '_members/includes/form.twig' with {action: 'users/login'} %}
+    {% block content %}
+
+        {% import '_members/macros/forms.twig' as forms %}
+
+        {% if errorMessage is defined %}
+            {% include '_members/includes/message.twig' with {
+                type: 'error',
+                message: errorMessage
+            } only %}
+        {% endif %}
+
+
+        {{ forms.textField({
+            user: user,
+            label: craft.app.config.general.useEmailAsUsername ? 'Email'|t : 'Username or Email'|t,
+            name: 'loginName',
+            value: user.email ??  craft.app.user.rememberedUsername ?? '',
+            required: true,
+        }) }}
+
+        {{ forms.textField({
+            user: user,
+            label: 'Password'|t,
+            type: 'password',
+            name: 'password',
+            required: true
+        }) }}
+
+        {{ forms.checkbox({
+            label: 'Remember me'|t,
+            name: 'rememberMe',
+            value: 1
+        }) }}
+
+
+        {% set membersEntry = craft.entries.membersTemplate('forgotpassword.twig') %}
+
+        <div class="flex items-center justify-between">
+            {% set membersEntry = craft.entries.membersTemplate('forgotpassword.twig').one %}
+            {% if membersEntry %}
+                <div class="text-sm">
+                    {{ membersEntry.link }}
+                </div>
+            {% endif %}
+            {% set membersEntry = craft.entries.membersTemplate('register.twig').one %}
+            {% if membersEntry %}
+                <div class="text-sm">
+                    <a href="{{ url('members/register') }}">
+                        {{ membersEntry.link }}
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+
+
+        <div>
+            {{ forms.button('Login'|t) }}
+        </div>
+
+
+
+    {% endblock %}
+{% endembed %}
+

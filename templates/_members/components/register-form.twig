@@ -1,0 +1,56 @@
+{% set user = user ?? null %}
+
+{% embed '_members/includes/form.twig' with {useSprig: true, action:'users/save-user', fullWidth: true} %}
+    {% block content %}
+
+        {% import '_members/macros/forms.twig' as forms %}
+
+        {% include '_members/include/flash.twig' with {
+            successMessage: 'We created your account! Please check your email to verify your email address.'|t,
+            errorMessage: 'Profile could not be created'|t
+        } %}
+
+        {% if not (success is defined and success) %}
+            <div class="md:flex md:space-x-block">
+                <div class="w-full">
+                    {{ forms.textField({
+                        user: user,
+                        label: 'Full Name'|t,
+                        name: 'fullName',
+                        required: true
+                    }) }}
+                </div>
+            </div>
+
+            <div class="md:flex md:space-x-block">
+                <div class="md:w-1/2">
+                    {{ forms.textField({
+                        user: user,
+                        label: 'Email'|t,
+                        name: 'email',
+                        type: 'email',
+                        required: true
+                    }) }}
+                </div>
+                <div class="md:w-1/2">
+                    {{ forms.textField({
+                        user: user,
+                        label: 'Password'|t,
+                        name: 'password',
+                        required: true,
+                        type: 'password'
+                    }) }}
+                </div>
+            </div>
+
+
+            <div class="pt-block w-64">
+                {{ forms.button('Register'|t, true) }}
+            </div>
+        {% endif %}
+
+
+    {% endblock %}
+{% endembed %}
+
+

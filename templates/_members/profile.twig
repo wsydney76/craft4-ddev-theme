@@ -1,0 +1,7 @@
+{# Require that a user is logged in to view this form. #}
+{% requireLogin %}
+
+{{ sprig.script }}
+
+{{ sprig('_members/components/edit-profile-form.twig') }}
+

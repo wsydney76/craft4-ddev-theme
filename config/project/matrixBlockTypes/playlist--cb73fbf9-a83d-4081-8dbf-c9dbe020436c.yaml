@@ -1,0 +1,132 @@
+field: 266ac6c3-03c0-40eb-8f24-c5c22ed1c5c0 # Content
+fieldLayouts:
+  65d2f478-9280-48a2-855f-6cbc575565c0:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 3ac8b547-8089-43db-b7de-39c79c658368 # Audio Files
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0cc69ceb-ef99-4bf5-9cdd-fc3db6b11e06
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 80122cfd-218e-4ef3-b770-e09e5e158847 # Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0676a5b1-d42b-4868-a848-f02195f3037d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: e5a06ddf-679e-479a-896f-24870a4278fa
+        userCondition: null
+fields:
+  3ac8b547-8089-43db-b7de-39c79c658368: # Audio Files
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: audios
+    instructions: 'One one playlist per page'
+    name: 'Audio Files'
+    searchable: false
+    settings:
+      blockTypeFields: 0
+      changedFieldIndicator: 1343947633
+      columns:
+        __assoc__:
+          -
+            - 82a2d82a-ecb9-4e2d-b41d-c67f2f77f73a # Image
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 666c8cf3-0639-4757-aefa-9490930dbf0f # Audio
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 95a20cdb-9cb3-4522-a2bf-db9721d195e8 # Titel
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - dbc263da-95a4-428a-a2eb-82d51acb4523 # Artist
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 04d14d45-3d49-4d75-9b1b-56b1cbe51772 # Duration
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_24_audios}}'
+      fieldLayout: table
+      maxRows: null
+      minRows: 1
+      propagationKeyFormat: null
+      propagationMethod: all
+      selectionLabel: 'Add audio'
+      staticField: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  80122cfd-218e-4ef3-b770-e09e5e158847: # Style
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: style
+    instructions: null
+    name: Style
+    searchable: false
+    settings:
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Default
+            -
+              - value
+              - default
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Simple
+            -
+              - value
+              - simple
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: playlist
+name: Playlist
+sortOrder: 8

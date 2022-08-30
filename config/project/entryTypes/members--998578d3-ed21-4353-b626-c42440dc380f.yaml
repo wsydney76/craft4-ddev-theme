@@ -1,0 +1,111 @@
+fieldLayouts:
+  e0a03f58-c83a-4555-9317-e625055e1027:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: c960e5a6-33c8-485c-b0ca-6cb387ee025f
+            userCondition: null
+            warning: null
+            width: 75
+          -
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: modules\main\conditions\IsCoverTitleStyleConditionRule
+                  uid: f2f304a1-b0e6-49d6-93ae-6fdd924814c8
+                  value: true
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: 1eecdd2c-f9c5-4379-b304-d81774f9391e # Increase Title Contrast
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2c49c21b-566d-4350-bf0d-e9b1bbe08bbf
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 55c8d23d-ad74-43a2-a3f2-8c4b6d969fe2 # Featured Image
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fd9685e8-4193-4db5-abd3-bb97ca91512e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f6ff43e3-8e77-457f-91cb-101f517889c9 # Teaser
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fccc6fa7-20ad-4c86-963f-62be3b9552dc
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 266ac6c3-03c0-40eb-8f24-c5c22ed1c5c0 # Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b08276ba-5cdc-4be4-a24a-35a8935e8ea6
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: e9781761-5a04-49d1-84ef-a9159f853e28 # Members Template
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4ad1b760-22af-43b6-99d1-259dabb01acb
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 0747c98f-7a7c-4dba-b878-67c960d13bdf
+        userCondition: null
+handle: members
+hasTitleField: true
+name: Members
+section: a6676538-ee52-4938-aaff-8d9d46b669af # Page
+sortOrder: 7
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: language

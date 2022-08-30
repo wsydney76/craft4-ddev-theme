@@ -1,0 +1,37 @@
+{# Sets a default value if not defined by `s-val:*` on the clicked element #}
+{% set page = page ?? 1 %}
+{% set limit = limit ?? theme.entriesPerIndexPage %}
+
+{% set entryQuery = craft.entries(_criteria).limit(limit) %}
+
+{% if not craft.app.plugins.pluginEnabled('imager-x') %}
+    {% do entryQuery.with ([
+        ['featuredImage', {withTransforms: [theme.cardImageTransform]}]
+    ]) %}
+{% endif %}
+
+{# Paginates the entry query given the current page #}
+{% set sprigPageInfo = sprig.paginate(entryQuery, page) %}
+{% set entries = sprigPageInfo.pageResults %}
+
+<div id="target" class=" {{ theme.stickyNavbar ? 'scroll-mt-24' }}">
+
+    {% if sprigPageInfo.totalPages > 1 %}
+        <div class="mb-4 font-semibold">
+            {{ 'Page'|t }} {{ sprigPageInfo.currentPage }} {{ 'of'|t }} {{ sprigPageInfo.totalPages }}
+        </div>
+    {% endif %}
+
+    <div id="entries" class="flex flex-wrap">
+        {% for entry in entries %}
+            {% include '_layouts/embeds/card.twig' with {
+                entry
+            } only %}
+        {% endfor %}
+    </div>
+
+
+    {% include '_components/paginate.twig' with {
+        sprigPageInfo
+    } only %}
+</div>

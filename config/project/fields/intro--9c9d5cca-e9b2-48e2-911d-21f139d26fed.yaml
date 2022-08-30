@@ -1,0 +1,19 @@
+columnSuffix: ljsesmqn
+contentColumnType: text
+fieldGroup: d868de82-ae37-4897-a6bb-ef08e919650b # Common
+handle: intro
+instructions: null
+name: Intro
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: text
+  initialRows: 2
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

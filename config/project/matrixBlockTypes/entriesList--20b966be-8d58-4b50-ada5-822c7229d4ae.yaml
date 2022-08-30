@@ -1,0 +1,94 @@
+field: 20f9b230-8862-4058-9cf3-7c7a78e44a13 # Column
+fieldLayouts:
+  997357be-7a87-4639-ae10-d5ee4afdc403:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: e55e1c63-45fc-4606-85d4-1fb90401c0a3 # Topic
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 62986ce0-05bc-4b98-8bb8-684b4e7eaa2c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 47f1b645-3900-4ecc-93d2-d2a218a0bf9a # Limit
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 34adfcf4-c3d8-484d-8592-c480737f1e85
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: f265d685-9eeb-4844-a5d6-cba71fee6637
+        userCondition: null
+fields:
+  47f1b645-3900-4ecc-93d2-d2a218a0bf9a: # Limit
+    columnSuffix: null
+    contentColumnType: smallint(2)
+    fieldGroup: null
+    handle: limit
+    instructions: null
+    name: Limit
+    searchable: false
+    settings:
+      decimals: 0
+      defaultValue: 10
+      max: 20
+      min: 1
+      prefix: null
+      previewCurrency: null
+      previewFormat: decimal
+      size: null
+      suffix: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  e55e1c63-45fc-4606-85d4-1fb90401c0a3: # Topic
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: topic
+    instructions: 'List entries related to this topic'
+    name: Topic
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      localizeRelations: false
+      maxRelations: null
+      minRelations: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Entry
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\entries\EntryCondition
+      selectionLabel: null
+      showSiteMenu: false
+      source: null
+      sources:
+        - 'section:a3a00a5e-73ba-4e8a-9800-375c9be802a9' # Topic
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: entriesList
+name: 'Entries List'
+sortOrder: 6

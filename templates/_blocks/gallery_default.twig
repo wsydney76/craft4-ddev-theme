@@ -1,0 +1,74 @@
+{% from '_macros/lib.twig' import img %}
+
+{% set query = block.images %}
+{% set id = id ?? block.id %}
+
+{% set numberOfColumns = numberOfColumns ?? block.numberOfColumns.value ?? 4 %}
+
+{% set aspectRatio = aspectRatio ?? block.aspectRatio ?? '1:1' %}
+{% if aspectRatio == 'default' %}
+    {% set aspectRatio = '1:1' %}
+{% endif %}
+
+{% set width = block.width == 'default' ? theme.defaultBlockTypeWidth['gallery'] : block.width %}
+
+{% set width = theme.widths[width] ?? 2500 %}
+
+
+{% set imgWidth = (width / numberOfColumns) %}
+
+{% set factors = aspectRatio|split(':') %}
+{% if factors|length != 2 %}
+    {% set factors = [1,1] %}
+{% endif %}
+
+{% set imgHeight = imgWidth / factors[0] * factors[1] %}
+
+{% set transform = {width: imgWidth|round(0, 'ceil'), height: imgHeight|round(0, 'ceil')} %}
+
+{% set images = query
+    .withTransforms([transform, theme.lightboxImageTransform])
+.all %}
+
+{% if images %}
+    <div class="gallery-{{ id }} grid grid-cols-2 md:grid-cols-{{ numberOfColumns }} gap-2">
+        {% for image in images %}
+
+            {% set alt = image.altText ?: image.title %}
+            {% set lightboxCaption = alt %}
+            {% if image.copyright %}
+                {% set lightboxCaption = "#{alt} &copy; #{image.copyright}" %}
+            {% endif %}
+
+            {% if craft.app.plugins.pluginEnabled('imager-x') %}
+                {% set transformedImage = craft.imager.transformImage(image, theme.lightboxImageTransform) %}
+                {% set lightboxUrl = transformedImage.url %}
+            {% else %}
+                {% set lightboxUrl = image.url(theme.lightboxImageTransform) %}
+            {% endif %}
+
+            <div class="relative">
+                <a class="bg-none block z-20 focus:outline-none focus:ring-4 focus:ring-black overflow-hidden"
+                   href="{{ lightboxUrl }}" data-caption="{{ lightboxCaption }}">
+                    {{ img(image, transform, {
+                        attrs: {
+                            alt: alt,
+                            class:'transform hover:scale-110 transition'
+                        },
+                        showCopyright: false
+                    }) }}
+                </a>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% js %}
+    window.addEventListener('load', function() {
+        baguetteBox.run('.gallery-{{ id }}');
+    });
+    {% endjs %}
+
+{% endif %}
+

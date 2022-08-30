@@ -1,0 +1,49 @@
+{% extends "_layouts/variables.twig" %}
+
+{% block html %}
+    <!doctype html>
+    <html lang="{{ craft.app.language[:2] }}" dir="{{ craft.app.locale.orientation }}" class="scroll-smooth"
+          style="overflow-y:scroll">
+    <head>
+        {% if not craft.app.plugins.pluginEnabled('seomate') %}
+            <title>{{ entry is defined and not entry.isHomepage ? "#{entry.title} | " }}{{ siteInfo.siteName }}</title>
+        {% endif %}
+
+        {% include '_layouts/partials/essentials.twig' %}
+
+    </head>
+
+    {% block body %}
+        {% set bodyClasses = bodyClasses ?? 'bg-background dark:bg-background-dark' %}
+        <body id="body"
+              class="dark:bg-background-dark text-custom font-custom text-foreground dark:text-foreground-dark {{ bodyClasses }}">
+        {% include '_partials/ie_warning.twig' %}
+
+        {% include '_partials/screenreader_link.twig' %}
+
+        {% block page %}
+
+            {% block content %}
+                <div id="content">
+                    {% if entry.bodyContent %}
+                        {% include "_partials/blocks.twig" with {
+                            entry,
+                            query: clone(entry.bodyContent)
+                        } only %}
+                    {% endif %}
+                </div>
+            {% endblock %}
+
+        {% endblock %}
+
+
+        {% if theme.cookieConsent %}
+            {% include '_partials/cookie_consent.twig' %}
+        {% endif %}
+
+        </body>
+    {% endblock %}
+
+    </html>
+
+{% endblock %}

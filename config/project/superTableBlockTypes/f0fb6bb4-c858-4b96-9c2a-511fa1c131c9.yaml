@@ -1,0 +1,75 @@
+field: 512edbee-e5b1-4422-9597-eeffd72ee9e5 # __blank__
+fieldLayouts:
+  93371f62-9ff6-4700-9462-571076c33835:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: e35ec4e7-302c-49f6-b5ae-a95120fbd4c0 # Question
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b28a6b75-acb3-4a98-b51c-96f5cdb1ff7f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 8fb04690-63b2-4e65-bb13-def05a978110 # Answer
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 85dad724-ab85-436f-8d33-f6e1a3a233d9
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 14e390c4-90e5-4635-a7a0-196fdb6b69cf
+        userCondition: null
+fields:
+  8fb04690-63b2-4e65-bb13-def05a978110: # Answer
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: answer
+    instructions: null
+    name: Answer
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: true
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  e35ec4e7-302c-49f6-b5ae-a95120fbd4c0: # Question
+    columnSuffix: null
+    contentColumnType: string(240)
+    fieldGroup: null
+    handle: question
+    instructions: null
+    name: Question
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 60
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText

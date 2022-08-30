@@ -1,0 +1,49 @@
+{% if entry is defined and entry and craft.app.plugins.pluginEnabled('seomate') %}
+    {% cache using key "ldjson_#{entry.site.handle}_#{entry.id}" %}
+
+        {% set image = entry.featuredImage.one ?? siteInfo.featuredImage.one %}
+        {% set imageUrl = '' %}
+
+        {% if image %}
+            {% if craft.app.plugins.pluginEnabled('imager-x') %}
+                {% set transformedImage = craft.imager.transformImage(image, {width: 1920, height: 1080}) %}
+                {% set imageUrl = transformedImage.url %}
+            {% else %}
+                {% set imageUrl = image.url({width: 1920, height: 1080}) %}
+            {% endif %}
+        {% endif %}
+
+        {% set schema = craft.schema %}
+
+
+        {% switch entry.section.handle %}
+
+        {% case "article" %}
+
+            {{ schema.article
+                .headline(entry.title)
+                .alternativeHeadline(entry.teaser ?? '')
+                .author(entry.author.fullName)
+                .datePublished(entry.postDate|date('Y-m-d'))
+                .image(imageUrl)
+                .publisher(schema.organization.name(siteInfo.copyright))
+            |raw
+            }}
+
+        {% default %}
+
+            {{ schema.webPage
+                .name(entry.title)
+                .description(entry.teaser ?? '')
+                .image(imageUrl)
+                .publisher(schema.profilePage.name(siteInfo.copyright))
+            |raw
+            }}
+
+        {% endswitch %}
+
+
+
+    {% endcache %}
+
+{% endif %}

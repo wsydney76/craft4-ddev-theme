@@ -1,0 +1,26 @@
+{% set headings = blocks|filter(b => b.type.handle == 'heading') %}
+
+{% if headings %}
+    <div class="bg-background dark:bg-background-dark {{ theme.useProse ? 'max-w-prose' }} border border-border">
+        {% embed '_layouts/components/collapsible.twig' with {buttonFullWidth: true, overlay: false} %}
+
+            {% block buttonText %}
+                <div class="font-bold">
+                    {{ 'Table of Content'|t }}
+                </div>
+            {% endblock %}
+
+            {% block panel %}
+                <div class="space-y-2">
+                    {% for heading in headings %}
+                        <div class="">
+                            <a class="!no-underline" href="#block-{{ heading.id }}">{{ heading.heading }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endblock %}
+
+        {% endembed %}
+    </div>
+
+{% endif %}

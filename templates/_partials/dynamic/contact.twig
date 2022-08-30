@@ -1,0 +1,43 @@
+<div class="space-y-4">
+
+    {% if siteInfo.text %}
+        <div>
+            {{ siteInfo.text|nl2br }}
+        </div>
+    {% endif %}
+
+
+    {% if siteInfo.email %}
+        {% set messageEntry = craft.entries.section('message').one %}
+
+        {% if messageEntry %}
+            <div>
+                ✉
+                <a href="{{ url(messageEntry.url) }}">{{ 'Message to'|t }} {{ siteInfo.siteName }}</a>
+            </div>
+        {% endif %}
+
+    {% endif %}
+
+
+    {% if siteInfo.telephone %}
+        <div>
+            {{ 'Phone'|t }}: {{ siteInfo.telephone }}
+        </div>
+    {% endif %}
+
+
+    {% if siteInfo.fax %}
+        <div>
+            {{ 'Fax'|t }}: {{ siteInfo.fax }}
+        </div>
+    {% endif %}
+
+    {% if siteInfo.webSite %}
+        <div>
+            {{ 'Web Site'|t }}: <a href="{{ siteInfo.webSite }}">{{ siteInfo.webSite }}</a>
+        </div>
+    {% endif %}
+
+</div>
+

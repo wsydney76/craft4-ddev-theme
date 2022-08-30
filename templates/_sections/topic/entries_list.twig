@@ -1,0 +1,7 @@
+<div class="container-{{ theme.pageWidth }}">
+    {% include "_partials/index-templates/cards.twig" with {
+        criteria: {
+            topics:  [entry.id]|merge(entry.descendants.ids)
+        }
+    } %}
+</div>

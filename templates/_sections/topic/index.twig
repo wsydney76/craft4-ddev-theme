@@ -1,0 +1,11 @@
+{% extends "_layouts/#{theme.layout}.twig" %}
+
+{% set themeOptions = {title: "#{'Topic'|t}: #{entry.title}"} %}
+
+{% block afterContent %}
+
+    {% include '_sections/topic/entries_list.twig' %}
+
+    {% include '_sections/topic/ancestors_descendants.twig' %}
+
+{% endblock %}

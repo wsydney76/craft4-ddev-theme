@@ -1,0 +1,15 @@
+{% from '_macros/lib.twig' import img %}
+
+{% set author = entry.author %}
+{% set person = craft.entries
+    .section('person')
+    .relatedTo(author)
+.one %}
+
+{% embed '_sections/person/profile.twig' with {person, author, showTitle: true} %}
+    {% block content %}
+        <div class="text-base">
+            {{ 'Published'|t }}: {{ entry.postDate|date('short') }}
+        </div>
+    {% endblock %}
+{% endembed %}

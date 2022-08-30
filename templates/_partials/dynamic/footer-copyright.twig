@@ -1,0 +1,12 @@
+&copy; {{ siteInfo.copyright }} {{ now|date('Y') }}
+{% set image = entry.featuredImage.one ?? null %}
+{% if image and image.copyright %}
+    <div class="text-sm">
+        &copy; {{ 'Featured Image'|t }}
+        {% if image.copyrightLink %}
+            <a href="{{ image.copyrightLink }}">{{ image.copyright }}</a>
+        {% else %}
+            {{ image.copyright }}
+        {% endif %}
+    </div>
+{% endif %}

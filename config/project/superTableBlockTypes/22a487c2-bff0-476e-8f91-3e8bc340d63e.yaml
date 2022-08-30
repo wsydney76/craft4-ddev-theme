@@ -1,0 +1,139 @@
+field: de449fa1-c503-42ac-a4cf-4c8fc3656099 # __blank__
+fieldLayouts:
+  d15441ec-f24b-4cb0-aa32-04e8cc923f56:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: b49d56c6-b29b-4ac0-ba55-aa83643aedaa # Target
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2f0da250-83dd-4531-a80f-d4555a995302
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: fb7af698-b5de-4042-9a4a-6f26a22c5073 # Caption
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3d1aa9b7-05fc-4d08-8a81-f0beaedc38b5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: bde02460-053f-4ab2-8c8a-6b782b53b949 # Background color
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e2a632b3-0532-45f6-9219-24134144750f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6126b7f5-ffb5-4ad1-958c-bc4b58a8f7d3 # Text color
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8b0621e7-db60-4eed-aece-752348280f18
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: a0028d9a-01f6-47e0-9ab2-20a4c425f854
+        userCondition: null
+fields:
+  6126b7f5-ffb5-4ad1-958c-bc4b58a8f7d3: # Text color
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: textColor
+    instructions: null
+    name: 'Text color'
+    searchable: false
+    settings:
+      defaultColor: white
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\main\fields\ThemeColorField
+  b49d56c6-b29b-4ac0-ba55-aa83643aedaa: # Target
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: target
+    instructions: null
+    name: Target
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      localizeRelations: false
+      maxRelations: 1
+      minRelations: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Entry
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\entries\EntryCondition
+      selectionLabel: 'Select entry'
+      showSiteMenu: true
+      source: null
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  bde02460-053f-4ab2-8c8a-6b782b53b949: # Background color
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: bgColor
+    instructions: null
+    name: 'Background color'
+    searchable: false
+    settings:
+      defaultColor: primary
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\main\fields\ThemeColorField
+  fb7af698-b5de-4042-9a4a-6f26a22c5073: # Caption
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: caption
+    instructions: null
+    name: Caption
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText

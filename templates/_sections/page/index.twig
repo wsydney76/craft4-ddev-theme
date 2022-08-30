@@ -1,0 +1,7 @@
+{% extends "_layouts/#{theme.layout}.twig" %}
+
+{% block afterContent %}
+    {% include '_partials/entry_children.twig' %}
+
+    {% include "_sections/page/#{entry.type.handle}.twig" ignore missing %}
+{% endblock %}

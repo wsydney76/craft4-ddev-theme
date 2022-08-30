@@ -1,0 +1,55 @@
+{% extends "_layouts/main.twig" %}
+
+{% set bgImage = null %}
+
+{% if theme.hasBackgroundImage == 'entry' %}
+    {% set bgImage = entry.featuredImage.one %}
+{% endif %}
+
+{% if theme.hasBackgroundImage in ['global','entry'] and not bgImage %}
+    {% set bgImage = siteInfo.backgroundImage.one %}
+{% endif %}
+
+{% if bgImage %}
+    {% set bodyClasses = 'bg-image bg-center bg-no-repeat bg-cover bg-fixed bg-frame-background/80 dark:bg-frame-background-dark bg-blend-darken backdrop-blur' %}
+
+    {# TODO: Add responsive sizes #}
+    {% css %}
+    .bg-image {
+        background-image: url("{{ bgImage.url }}");
+        }
+    {% endcss %}
+{% else %}
+    {% set bodyClasses = 'bg-frame-background dark:bg-frame-background-dark' %}
+{% endif %}
+
+
+{% block page %}
+    <div class="py-4 ">
+        <div class="container max-w-screen-{{ theme.pageWidth }} mx-auto {{ bgImage ? 'bg-background/80  dark:bg-background-dark/80  bg-blend-darken backdrop-blur' : 'bg-background dark:bg-background-dark'}}">
+            <header class="px-8 py-6">
+                {{ navbarHtml|raw }}
+            </header>
+
+            <main id="content" class="{{ theme.stickyNavbar ? 'scroll-mt-24' }}">
+                {% include '_layouts/partials/frame_titlearea.twig' %}
+
+                <div class="py-4">
+                    <div class="mt-block">
+                        {% block beforeContent %}{% endblock %}
+                        {{ block('content') }}
+                        {% block afterContent %}{% endblock %}
+                    </div>
+                </div>
+            </main>
+
+            <footer class="mt-8 py-4 px-8 border-t border-border dark:border-border-dark bg-footer-bg dark:bg-footer-bg-dark text-footer-text dark:text-footer-text-dark">
+                {% include '_layouts/partials/footer.twig' %}
+            </footer>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+

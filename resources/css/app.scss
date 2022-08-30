@@ -1,0 +1,119 @@
+@import "fonts/fonts.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// We use a single file here, because changes in imported css files do not trigger a hot module reload
+
+@layer base {
+  h1, h2 {
+    @apply font-headings;
+  }
+
+  a {
+    @apply hover:underline;
+  }
+
+  // @import "fonts/fonts.css";
+}
+
+@layer components {
+
+  .rich-text {
+    p:not(:first-child) {
+      @apply mt-4;
+    }
+
+    p:not(:last-child) {
+      @apply mb-4;
+    }
+
+    a {
+      @apply underline;
+    }
+
+    ul, ol {
+      @apply pl-6;
+    }
+
+    li {
+      @apply list-disc;
+    }
+
+    h2 {
+      @apply text-h2;
+    }
+  }
+
+
+  a.btn {
+    @apply no-underline;
+  }
+
+  .btn {
+    @apply transition-colors px-6 py-2 rounded no-underline  hover:bg-foreground hover:text-background dark:hover:bg-foreground-dark dark:hover:text-background-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black;
+  }
+
+  .container-sm {
+    @apply max-w-screen-sm mx-auto px-block;
+  }
+
+  .container-md {
+    @apply max-w-screen-md mx-auto px-block;
+  }
+
+  .container-ml {
+    @apply max-w-screen-ml mx-auto px-block;
+  }
+
+  .container-lg {
+    @apply max-w-screen-lg mx-auto px-block;
+  }
+
+  .container-xl {
+    @apply max-w-screen-xl mx-auto px-block;
+  }
+
+  .container-2xl {
+    @apply max-w-screen-2xl mx-auto px-block;
+  }
+
+  .htmx-indicator { display: none; }
+  .htmx-request.htmx-indicator { display: block; }
+
+  [x-cloak] { display: none !important; }
+
+}
+
+@layer utilities {
+  .nav-link {
+    @apply text-sm font-semibold uppercase hover:no-underline border-b-2 hover:border-primary dark:hover:border-primary-dark;
+  }
+
+  .pagination {
+    @apply mt-block flex flex-wrap border-l border-primary;
+    .pagination-link {
+      @apply w-10 h-10 text-base flex items-center justify-center border-t border-b border-r border-primary dark:border-primary-dark hover:bg-primary dark:hover:bg-primary-dark hover:text-white dark:hover:text-secondary-dark;
+    }
+  }
+
+  .no-scroll {
+    @apply overflow-hidden h-full;
+  }
+
+  .\? {
+    animation: \?wobble 0.5s ease-in-out alternate infinite;
+  }
+
+  @keyframes \?wobble {
+    0% {
+      box-shadow: inset 2px 2px gold, inset -2px -2px gold;
+    }
+    100% {
+      box-shadow: inset 4px 4px orange, inset -4px -4px orange;
+    }
+
+  }
+}
+
+@import 'baguettebox.js/dist/baguetteBox.min.css';

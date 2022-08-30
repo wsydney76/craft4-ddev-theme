@@ -1,0 +1,12 @@
+{% if block.text %}
+    <blockquote class="border-l-4 border-light dark:border-light-dark py-4 px-block {{ theme.useProse ? 'max-w-prose' }}">
+        <p class="italic text-2xl font-semibold">
+            {{ block.text|quote }}
+        </p>
+        {% if block.attribution %}
+            <cite class="not-italic text-base">
+                {{ block.attribution }}
+            </cite>
+        {% endif %}
+    </blockquote>
+{% endif %}

@@ -1,0 +1,19 @@
+columnSuffix: null
+contentColumnType: text
+fieldGroup: ec7ee471-b43b-491e-9fed-acb78c59acc4 # Kontakt
+handle: individualContact
+instructions: 'Appears before the standard contact details'
+name: 'Individual contact'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: text
+  initialRows: 4
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

@@ -1,0 +1,144 @@
+/* Set link color back to V3, increase contrast */
+:root {
+    --text-color: var(--gray-800);
+    --medium-dark-text-color: var(--gray-700);
+    --link-color: #0b69a3;
+}
+
+/* Increase font size */
+
+html, body {
+    font-size: 16px !important;
+}
+
+input.text, textarea.text, .text > input, .text > textarea, table.editable textarea, .selectize-text > .selectize-control > .selectize-input {
+    font-size: 16px !important;
+}
+
+[data-type="heading"] input, [data-type="summary"] input, #title-field input {
+    font-size: 18px !important;
+}
+
+/* We are not at a funeral */
+#global-sidebar {
+    background-color: var(--blue-900) !important;
+}
+
+/* experimental */
+
+.site--en #global-sidebar {
+    background-color: var(--red-800) !important;
+}
+
+/* Element index sidebar */
+.sidebar .heading span {
+    color: var(--blue-900) !important;
+    font-size: 13px !important;
+    letter-spacing: 1px !important
+}
+
+#sidebar nav li a.sel {
+    background-color: var(--gray-050) !important
+}
+
+#sidebar .heading {
+    cursor: pointer !important;
+}
+
+/*#sidebar .heading::before {
+    content: "> ";
+}
+
+#sidebar a {
+    margin-left: 12px;
+}*/
+
+/* Move matrix blocks a bit to the right, so that you can easier find the next field */
+.blocks {
+    margin-left: 18px !important
+}
+
+/* Make matrix block title bar stand out */
+
+.matrixblock > .titlebar > .blocktype {
+    color: var(--gray-700) !important;
+}
+
+.matrixblock > .titlebar {
+    background-color: var(--gray-200) !important
+}
+
+.matrixblock > .titlebar > .blocktype {
+    font-weight: bold !important;
+    color: var(--gray-600)
+}
+
+.matrixblock.collapsed > .titlebar > .blocktype {
+    font-weight: normal !important
+}
+
+.matrixmate-block-inited .matrixmate-tabs li a {
+    color: var(--gray-900) !important;
+}
+
+/* experimental: titlebar colors by matrixmate group */
+[data-type="image"] .titlebar,
+[data-type="gallery"] .titlebar,
+[data-type="embed"] .titlebar,
+[data-type="imageAndText"] .titlebar,
+[data-type="audio"] .titlebar,
+[data-type="playlist"] .titlebar,
+[data-type="video"] .titlebar {
+    background-color: var(--blue-100) !important;
+}
+
+[data-type="articles"] .titlebar,
+[data-type="summary"] .titlebar,
+[data-type="buttons"] .titlebar,
+[data-type="quote"] .titlebar,
+[data-type="faq"] .titlebar,
+[data-type="markdown"] .titlebar,
+[data-type="dynamicBlock"] .titlebar {
+    background-color: var(--red-100) !important;
+}
+
+.matrixblock .titlebar .error [data-icon="alert"], .matrixmate-tabs [data-icon="alert"] {
+    color: #D61F2B;
+}
+
+
+/* For colums block: group column content togeter */
+div[id$="fields-columns"] .superTable-layout-row-new {
+    border: 2px solid var(--gray-200) !important;
+}
+
+/* 4.2 toasts */
+#notifications [data-type="error"] {
+    background-color: #D61F2B;
+    color: white;
+}
+
+#notifications [data-type="success"] {
+    background-color: #147D64;
+    color: white;
+}
+
+#notifications [data-type="notice"] {
+    background-color: #147D64;
+    color: white;
+}
+
+#notifications .notification .notification-icon {
+    color: white;
+}
+body.ltr #notifications {
+    bottom: initial;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#notifications .notification-details {
+    background-color: white;
+    padding: 4px;
+}
+
