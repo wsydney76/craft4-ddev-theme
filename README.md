@@ -24,7 +24,7 @@ Replace `project` with your project name
 * Create DDEV config: `ddev config --project-name=project --project-type=php --php-version=8.1 --http-port=81`. You can omit
   the ports if you are using the default ports 80/443
 * `ddev start`
-* `ddev php setup-ddev.php`. This will create a `config/Env.php' file with default settings. Use your project name as
+* `ddev php ./setup/create-environment-file.php project`. This will create a `.env' file with default settings. Use your project name as
   handle when asked.
 * Run `ddev composer install`
 * Run `ddev php craft install --interactive=0 --username=admin --password=password --email=admin@example.com`
@@ -32,7 +32,7 @@ Replace `project` with your project name
 
 * For creating faker content/membership entries as described below replace `php craft` with `ddev php craft`
 
-Tipp: Run `bash install-ddev`
+Tipp: Run `bash setup/install`
 
 
 ## Installation in WAMP/XAMPP/MAMPP etc.

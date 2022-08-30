@@ -17,7 +17,7 @@
  * your config/ folder, alongside this one.
  */
 
-use config\Env;
+
 use craft\db\Table;
 use craft\helpers\App;
 use modules\guide\GuideModule;
@@ -25,7 +25,7 @@ use modules\main\MainModule;
 use yii\web\DbSession;
 
 return [
-    'id' => Env::APP_ID,
+    'id' => App::env('CRAFT_APP_ID'),
     'modules' => [
         'main' => MainModule::class,
         'guide' => GuideModule::class

@@ -2,17 +2,18 @@
     "version": "1.0.0",
     "description": "Flexible Theme Starter for Craft 4",
     "require": {
-        "craftcms/cms": "4.2.1.1",
+        "craftcms/cms": "4.2.3",
         "craftcms/redactor": "3.0.2",
         "fakerphp/faker": "^1.17",
         "nystudio107/craft-vite": "^4.0",
         "putyourlightson/craft-sprig": "2.1.0",
         "spacecatninja/imager-x": "4.1.2",
-        "spicyweb/craft-embedded-assets": "3.0.4",
+        "spicyweb/craft-embedded-assets": "3.0.5",
         "vaersaagod/matrixmate": "2.1.0",
         "vaersaagod/seomate": "2.0.3",
         "verbb/smith": "2.0.0",
         "verbb/super-table": "dev-craft-4 as 3.0.0-beta.5",
+        "vlucas/phpdotenv": "^5.4",
         "wsydney76/elementmap": "^4.0.0",
         "wsydney76/work": "^4.0.0",
         "yiisoft/yii2-shell": "^2.0"
@@ -35,9 +36,6 @@
         }
     },
     "scripts": {
-        "post-install-cmd": [
-            "@php -r \"file_exists('config/Env.php') || copy('config/Env.php.example', 'config/Env.php');\""
-        ],
         "pre-update-cmd": [
             "@php craft off"
         ],

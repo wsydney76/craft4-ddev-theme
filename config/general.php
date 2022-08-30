@@ -8,23 +8,20 @@
  * @see \craft\config\GeneralConfig
  */
 
-use config\Env;
+use craft\helpers\App;
 use craft\config\GeneralConfig;
 
-$isDev = Env::ENVIRONMENT === 'dev';
-$isProd = Env::ENVIRONMENT === 'production';
+$isDev = App::env('CRAFT_ENVIRONMENT') === 'dev';
+$isProd = App::env('CRAFT_ENVIRONMENT') === 'production';
 
 return GeneralConfig::create()
 	// Dev Mode (see https://craftcms.com/guides/what-dev-mode-does)
 	->devMode($isDev)
 
-	// The secure key Craft will use for hashing and encrypting data
-	->securityKey(Env::SECURITY_KEY)
-
 	// Set this to `false` to prevent administrative changes from being made on production
 	->allowAdminChanges($isDev)
 
-	// Whether to enable Craft’s template {% cache %} tag on a global basis.
+	// Whether to enable Craft's template {% cache %} tag on a global basis.
 	->enableTemplateCaching($isProd)
 
 	// Whether front end requests should respond with X-Robots-Tag
@@ -79,19 +76,15 @@ return GeneralConfig::create()
 	->aliases([
 
 		// Prevent the @web alias from being set automatically (cache poisoning vulnerability)
-		'@web' => Env::DEFAULT_SITE_URL,
+		'@web' => App::env('DEFAULT_SITE_URL'),
 
 		// Base Url
-		'@baseurl' => Env::DEFAULT_SITE_URL,
+		'@baseurl' => App::env('DEFAULT_SITE_URL'),
 
 		// Lets `./craft clear-caches all` clear CP resources cache
 		'@webroot' => dirname(__DIR__) . '/web',
 
 	])
-
-	// Whether Craft should run pending queue jobs automatically when someone visits the control panel.
-	// Run php craft queue/listen if set to false
-	->runQueueAutomatically(Env::RUN_QUEUE_AUTOMATICALLY)
 
 	// When true, Craft will always return a successful response in the “forgot password” flow, making it difficult to enumerate users.
 	->preventUserEnumeration(true)

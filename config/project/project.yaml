@@ -1,6 +1,6 @@
 assets:
   tempVolumeUid: 1d9fc6a9-72e3-404b-86a9-2ba2014002f0 # Temporary Uploads
-dateModified: 1660475327
+dateModified: 1661868710
 elementSources:
   craft\elements\Asset:
     -
@@ -692,7 +692,7 @@ plugins:
   imager-x:
     edition: pro
     enabled: true
-    licenseKey: KM6EWK48GP7O2AW535XV8UC1
+    licenseKey: $IMAGER_X_LICENSE_KEY
     schemaVersion: 4.0.0
   matrixmate:
     edition: standard

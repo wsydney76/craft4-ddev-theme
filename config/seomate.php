@@ -1,6 +1,7 @@
 <?php
 
 use config\Env;
+use craft\helpers\App;
 
 // https://github.com/vaersaagod/seomate/blob/master/README.md
 
@@ -36,7 +37,7 @@ return [
             ],
         ],
 
-        'siteName' => Env::ENVIRONMENT . ' ' . Craft::$app->getSystemName(),
+        'siteName' => App::env('CRAFT_ENVIRONMENT') . ' ' . Craft::$app->getSystemName(),
         'sitenameSeparator' => ' - '
     ],
 

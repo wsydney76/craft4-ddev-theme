@@ -1,4 +1,4 @@
-baseUrl: '@web/en'
+baseUrl: $EN_SITE_URL
 enabled: '1'
 handle: en
 hasUrls: true
