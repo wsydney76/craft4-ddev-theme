@@ -11,7 +11,7 @@ Usefull for demos and hobby projects.
 
 * Open Terminal (On Windows: Open WSL2 Terminal (e.g. Ubuntu) as administrator)
 * `cd <your-dev-directory`
-* `git clone https://github.com/wsydney76/craft-theme4 project`
+* `git clone https://github.com/wsydney76/craft-ddev-theme4 project`
 * `cd project`
 
 
