@@ -20,18 +20,16 @@
  * @copyright Copyright (c) 2019 nystudio107
  */
 
-namespace nystudio107\craft;
+namespace modules\_faux;
 
 use craft\elements\Asset;
-use craft\elements\Category;
 use craft\elements\Entry;
 use craft\elements\GlobalSet;
 use craft\elements\MatrixBlock;
 use craft\elements\User;
 use craft\models\Site;
-use craft\web\twig\variables\CraftVariable;
 use craft\web\twig\variables\Paginate;
-use craft\web\view;
+use Illuminate\Support\Collection;
 use putyourlightson\blitz\variables\BlitzVariable;
 use putyourlightson\sprig\variables\PaginateVariable;
 use spacecatninja\imagerx\models\LocalTransformedImageModel;
@@ -39,10 +37,9 @@ use spacecatninja\imagerx\variables\ImagerVariable;
 use Spatie\SchemaOrg\Schema;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
-use verbb\supertable\elements\SuperTableBlockElement;
 
 /**
- * @author    nystudio107
+ * @author    nystudio107 / wsydney76
  * @package   FauxTwigExtension
  * @since     1.0.0
  */
@@ -51,36 +48,45 @@ class FauxTwigExtension extends AbstractExtension implements GlobalsInterface
     public function getGlobals(): array
     {
         return [
-            // Craft Variable
-            'craft' => new CraftVariable(),
-            // Craft Elements
+            // Craft Variable with custom properties for plugin variables.
+            // No idea why this does work sometimes, sometimes it doesn't
+            'craft' => new CustomCraftVariable(),
+
+            // Inserted by Craft CMS
+            'entry' => new Entry(),
+
+            // Custom variables, templates should use these names by convention
+
+            // Craft Elements / Models
             'asset' => new Asset(),
             'image' => new Asset(),
-            'category' => new Category(),
-            'entry' => new Entry(),
             'block' => new MatrixBlock(),
             'user' => new User(),
-            // Misc. Craft globals
-            'currentUser' => new User(),
-            'currentSite' => new Site(),
             'site' => new Site(),
-            'view' => new view(),
+
+
+            // Global Set
             'siteInfo' => new GlobalSet(),
-            'blitz' => new BlitzVariable(),
+
+            // Collections (Query results)
+            'entries' => new Collection(),
+            'blocks' => new Collection(),
+            'images' => new Collection(),
+
+            // Pagination
             'pageInfo' => new Paginate(),
             'sprigPageInfo' => new PaginateVariable(),
+
+
+            // Plugin variables
+            // Use workaround if autocompletion for craft.xxx does not work
+            // set schema = craft.schema
+            'schema' => new Schema(),
             'imager' => new ImagerVariable(),
+            'blitz' => new BlitzVariable(),
+
             'transform' => new LocalTransformedImageModel(),
 
-            'schema' => new Schema(),
-            // Commerce Elements
-            //'lineItem' => new \craft\commerce\models\LineItem(),
-            //'order' => new \craft\commerce\elements\Order(),
-            //'product' => new \craft\commerce\elements\Product(),
-            //'variant' => new \craft\commerce\elements\Variant(),
-            //'commerce' => new \craft\commerce\Plugin(),
-            // Third party globals
-            //'seomatic' => new \nystudio107\seomatic\variables\SeomaticVariable(),
         ];
     }
 }
