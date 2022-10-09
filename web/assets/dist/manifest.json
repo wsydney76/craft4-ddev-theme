@@ -4,13 +4,13 @@
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "app.37accf4f.css"
+      "app.73841531.css"
     ],
     "integrity": "sha384-RSc39b7MysXTaceMBfqzks1Do5ZENXXtkOyhHhE8EI/SU/AMdA1uQ2DrUxwToO6o"
   },
   "resources/js/app.css": {
-    "file": "app.37accf4f.css",
+    "file": "app.73841531.css",
     "src": "resources/js/app.css",
-    "integrity": "sha384-xoXWWcvm6YbBf0oXz6YMDc5AnSagoaWlfDwCdIzhtUPO9gZR07B6yuVJGsRPWgP/"
+    "integrity": "sha384-cMB3QsqL89Wc96eTAEZSqtXUiux8ENAxD0/zOFLmsyXicizRguusK0sVljA+jMM2"
   }
 }
