@@ -30,19 +30,15 @@ input.text, textarea.text, .text > input, .text > textarea, table.editable texta
     background-color: var(--red-800) !important;
 }
 
-/* Element index sidebar */
-.sidebar .heading span {
-    color: var(--blue-900) !important;
-    font-size: 13px !important;
-    letter-spacing: 1px !important
-}
 
-#sidebar nav li a.sel {
-    background-color: var(--gray-050) !important
-}
 
 #sidebar .heading {
     cursor: pointer !important;
+}
+
+#sidebar  li.heading > span {
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
 /*#sidebar .heading::before {

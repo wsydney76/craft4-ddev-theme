@@ -1,6 +1,6 @@
 setSidebarVisibility();
 
-$('#sidebar .heading').click(
+$('#sidebar  li.heading > span').click(
     function() {
         toggleVisibilityOfNextElement($(this));
         storeSidebarVisibility();
