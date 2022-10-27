@@ -31,11 +31,6 @@ input.text, textarea.text, .text > input, .text > textarea, table.editable texta
 }
 
 
-
-#sidebar .heading {
-    cursor: pointer !important;
-}
-
 #sidebar  li.heading > span {
     font-size: 14px;
     letter-spacing: 1px;
@@ -138,3 +133,12 @@ body.ltr #notifications {
     padding: 4px;
 }
 
+/* toggle sidebar visibility */
+
+#sidebar .heading {
+    cursor: pointer !important;
+}
+
+#sidebar .collapsed ul {
+    display: none;
+}
