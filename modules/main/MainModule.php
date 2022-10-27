@@ -23,8 +23,6 @@ use craft\services\Fields;
 use craft\web\View;
 use modules\main\behaviors\EntryBehavior;
 use modules\main\conditions\HasDraftsConditionRule;
-use modules\main\conditions\HasEmptyAltTextConditionRule;
-use modules\main\conditions\HasEmptyCopyrightConditionRule;
 use modules\main\conditions\IsCoverTitleStyleConditionRule;
 use modules\main\fields\AspectRatioField;
 use modules\main\fields\IncludeField;
@@ -197,8 +195,6 @@ class MainModule extends Module
 			function(RegisterConditionRuleTypesEvent $event) {
 
 				$event->conditionRuleTypes = array_merge($event->conditionRuleTypes, [
-					HasEmptyCopyrightConditionRule::class,
-					HasEmptyAltTextConditionRule::class,
 					HasDraftsConditionRule::class,
 					IsCoverTitleStyleConditionRule::class
 				]);

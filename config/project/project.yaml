@@ -1,6 +1,6 @@
 assets:
   tempVolumeUid: 1d9fc6a9-72e3-404b-86a9-2ba2014002f0 # Temporary Uploads
-dateModified: 1662196817
+dateModified: 1666910404
 elementSources:
   craft\elements\Asset:
     -
@@ -39,11 +39,16 @@ elementSources:
         class: craft\elements\conditions\assets\AssetCondition
         conditionRules:
           -
-            class: modules\main\conditions\HasEmptyAltTextConditionRule
-            uid: be1ac796-4735-40ec-840d-7027e689421e
-            value: true
+            class: craft\fields\conditions\TextFieldConditionRule
+            fieldUid: 27d258a2-a6f5-44f8-9692-e0a1b254cea4 # Alt Text
+            operator: empty
+            uid: 68c9c2ba-cdd4-4853-ad0a-ceaa3ef75da5
+            value: ''
         elementType: craft\elements\Asset
         fieldContext: global
+      defaultSort:
+        - title
+        - asc
       key: 'custom:e1a679f1-d1f3-414b-a171-930377cf259b'
       label: 'Empty Alt Text'
       tableAttributes:
@@ -58,11 +63,16 @@ elementSources:
         class: craft\elements\conditions\assets\AssetCondition
         conditionRules:
           -
-            class: modules\main\conditions\HasEmptyCopyrightConditionRule
-            uid: 25431ec8-47a3-47fa-8abc-52dacf2847bc
-            value: true
+            class: craft\fields\conditions\TextFieldConditionRule
+            fieldUid: dc298055-236a-4bbc-9246-ae94c0e76889 # Copyright
+            operator: empty
+            uid: a870ec25-f656-4f86-85c7-593cc70d0857
+            value: ''
         elementType: craft\elements\Asset
         fieldContext: global
+      defaultSort:
+        - title
+        - asc
       key: 'custom:4ee1f15a-964f-4f7a-911f-89f38710ec8f'
       label: 'Empty Copyright'
       tableAttributes:
